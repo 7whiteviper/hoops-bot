@@ -24,9 +24,13 @@ logging.basicConfig(level=logging.INFO)
 #Lifecycle events
 @bot.event
 async def on_ready():
-    """Runs once when the bot connects successfully."""
-print(f"[HoopsBot] Logged in as {bot.user} (id: {bot.user.id})")
-print("Ready to accept commands!")
+    user = bot.user
+    if user:
+        print(f"[HoopsBot] Logged in as {user} (id: {user.id})")
+    else:
+        print("[HoopsBot] Bot logged in, but user info not available yet.")
+    print("Ready to accept commands!")
+
 
 #commands
 @bot.command(name="score")
